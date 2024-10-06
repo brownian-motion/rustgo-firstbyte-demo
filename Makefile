@@ -11,3 +11,8 @@ run: lib/libfirstbyte.a
 .PHONY: clean
 clean:
 	rm -rf lib/libfirstbyte.a lib/firstbyte/target
+
+.PHONY: test
+test:
+	@cd lib/firstbyte && cargo test
+	go test ./...

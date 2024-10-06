@@ -2,12 +2,12 @@ package internal_test
 
 import (
 	"fmt"
-	"github.com/brownian-motion/rustgo-firsttest"
+	. "github.com/brownian-motion/rustgo-firstbyte-demo/internal"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
-func Test_first_byte(t *testing.T) {
+func Test_FirstByte(t *testing.T) {
 	for _, testCase := range []struct {
 		input    string
 		expected rune
@@ -15,8 +15,8 @@ func Test_first_byte(t *testing.T) {
 		{input: "", expected: rune(0)},
 		{input: "Some input", expected: rune('S')},
 	} {
-		t.Run(fmt.Sprintf("\"%s\" -> '%s'"), testCase.input, string(testCase.expected), func(t *testing.T) {
-			assert.Equal(t, testCase.expected, main.first_byte(testCase.input))
+		t.Run(fmt.Sprintf("\"%s\" -> '%s'", testCase.input, string(testCase.expected)), func(t *testing.T) {
+			assert.Equal(t, testCase.expected, FirstByte(testCase.input))
 		})
 	}
 }
