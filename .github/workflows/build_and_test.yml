@@ -1,0 +1,29 @@
+on:
+  pull_request:
+    types: [opened, reopened, edited, synchronize]
+  push:
+    branches: [main]
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Build Rust lib"
+        run: cargo build --release --verbose
+        working-directory: ./lib/firstbyte
+      - name: "Test Rust lib"
+        run: cargo test verbose
+        working-directory: ./lib/firstbyte
+      - name: "Copy library"
+        run: cp lib/firstbyte/target/release/libfirstbyte.a lib/
+      - name: "Test Go main"
+        run: go test ./...
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Enforce Rust format"
+        run: cargo fmt --check
+        working-directory: ./lib/firstbyte
+      - name: "Enforce Go format"
+        run: go vet
