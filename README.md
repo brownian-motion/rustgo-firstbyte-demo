@@ -2,3 +2,13 @@
 Demos building a static library in Rust and importing it in Go using the CGo interface.
 
 Followed the example demonstrated by https://github.com/mediremi/rust-plus-golang .
+
+This source code is primarily hosted on [Github](https://github.com/brownian-motion/rustgo-firstbyte-demo), and mirrored on [Gitlab](https://gitlab.com/brownian-motion-demos/rustgo-firstbyte-demo.git).
+
+## License
+
+This code uses the [MIT License](./LICENSE.md)
+
+## Contributing
+
+This is a toy demo. Please do not raise issues or open PRs.
